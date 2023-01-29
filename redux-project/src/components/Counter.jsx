@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { counterActions } from '../store';
 import classes from './Counter.module.css';
 
 // We import useSelector from react-redux.  This allows us to use a slice of our store.  If we were using class based components we would import 'connect' instead.  This connect function can be used as a wrapper around the function we want to use our store in.
@@ -14,19 +15,23 @@ const Counter = () => {
   const showCounter = useSelector(state => state.showCounter);
 
   const incrementHandler = () => {
-    dispatch({ type: 'INCREMENT' });
+    // dispatch({ type: 'INCREMENT' });
+    dispatch(counterActions.increment());
   };
 
   const increaseHandler = () => {
-    dispatch({ type: 'INCREASE', value: 10 });
+    // dispatch({ type: 'INCREASE', value: 10 });
+    dispatch(counterActions.increase(10)); // {type: SOME_UNIQUE_IDENTIFIER, payload: 10}  we can pass just a number in because redux toolkit automatically returns an object like this.  payload is the name redux toolkit uses for the value. We cannot change this name.
   };
 
   const decrementHandler = () => {
-    dispatch({ type: 'DECREMENT' });
+    // dispatch({ type: 'DECREMENT' });
+    dispatch(counterActions.decrement());
   };
 
   const toggleCounterHandler = () => {
-    dispatch({ type: 'TOGGLE' });
+    // dispatch({ type: 'TOGGLE' });
+    dispatch(counterActions.toggleCounter());
   };
 
   return (
