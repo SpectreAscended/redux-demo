@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { counterActions } from '../store';
+import { counterActions } from '../store/index';
 import classes from './Counter.module.css';
 
 // We import useSelector from react-redux.  This allows us to use a slice of our store.  If we were using class based components we would import 'connect' instead.  This connect function can be used as a wrapper around the function we want to use our store in.
@@ -11,8 +11,8 @@ import classes from './Counter.module.css';
 
 const Counter = () => {
   const dispatch = useDispatch();
-  const counter = useSelector(state => state.counter);
-  const showCounter = useSelector(state => state.showCounter);
+  const counter = useSelector(state => state.counter.counter);
+  const showCounter = useSelector(state => state.counter.showCounter);
 
   const incrementHandler = () => {
     // dispatch({ type: 'INCREMENT' });

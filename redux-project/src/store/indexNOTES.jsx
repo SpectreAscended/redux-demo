@@ -40,16 +40,49 @@ const authSlice = createSlice({
     logIn(state) {
       state.isAuthenticated = true;
     },
-    logOut(state) {
+    logOut() {
       state.isAuthenticated = false;
     },
   },
 });
 
+// const counterReducer = (state = initialCounterState, action) => {
+//   switch (action.type) {
+//     case 'INCREMENT': {
+//       return { ...state, counter: state.counter + 1 };
+//     }
+
+//     case 'DECREMENT': {
+//       return { ...state, counter: state.counter - 1 };
+//     }
+
+//     case 'INCREASE': {
+//       return { ...state, counter: state.counter + action.value };
+//     }
+
+//     case 'TOGGLE': {
+//       return { ...state, showCounter: !state.showCounter };
+//     }
+
+//     default: {
+//       return state;
+//     }
+//   }
+// };
+
+// const store = createStore(counterReducer);
+
 // We can pass an object of reducers into our configureStore({ reducer: {counter: counterSlice.reducer, otherReducer: otherReducer.reducer} }) and behind the scenes redux toolkit will combine all of our reducers into one giant one.
 const store = configureStore({
+  // reducer: { counter: counterSlice.reducer },
   reducer: { counter: counterSlice.reducer, auth: authSlice.reducer },
 });
+
+// const counterSubscriber = () => {
+//   const latestState = store.getState();
+// };
+
+// store.subscribe(counterSubscriber);
 
 export const counterActions = counterSlice.actions;
 export const authActions = authSlice.actions;
