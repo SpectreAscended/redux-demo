@@ -25,7 +25,7 @@ const Auth = () => {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" autoComplete="password" />
           </div>
-          <button>Login</button>
+          <button type="submit">Login</button>
         </form>
       </section>
     </main>
